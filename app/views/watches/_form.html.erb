@@ -11,6 +11,16 @@
     </div>
   <% end %>
 
+  <%= form.label :cover_image, "表紙画像", class: "text-lg font-semibold" %>
+  <div class="inline-flex items-center gap-2">
+    <% if @watch.image.attached? %>
+      <%= image_tag(@watch.image, style: 'width:180px;height:120px;') %>
+    <% else %>
+      <%= image_tag('/rolex/donghonam.jpg', style: 'width:180px;height:120px;') %>
+    <% end %>
+    <%= form.file_field :image, class: "" %>
+  </div>
+
   <div>
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>

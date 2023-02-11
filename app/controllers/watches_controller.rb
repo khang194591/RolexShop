@@ -4,10 +4,10 @@ class WatchesController < ApplicationController
   # GET /watches or /watches.json
   def index
     @watches = if params[:gender]
-      Watch.where('gender LIKE ?', "%#{params[:gender]}%")
-    else 
-      Watch.all
-    end
+                 Watch.where('gender LIKE ?', "%#{params[:gender]}%")
+               else
+                 Watch.all
+               end
   end
 
   # GET /watches/1 or /watches/1.json
@@ -62,13 +62,14 @@ class WatchesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_watch
-      @watch = Watch.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def watch_params
-      params.require(:watch).permit(:title, :description, :content, :price, :gender)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_watch
+    @watch = Watch.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def watch_params
+    params.require(:watch).permit(:title, :description, :content, :price, :gender, :image)
+  end
 end
